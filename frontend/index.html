@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NOVA</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Highlight.js -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <!-- Intro -->
+    <div id="intro" class="intro">
+      <div class="intro-center">
+        <div id="novaWord" class="logo gradient">NOVA</div>
+        <div id="hiWord" class="logo gradient hi hidden">Hi</div>
+        <div id="tap" class="tap hidden">Tap to enable sound</div>
+      </div>
+      <audio
+        id="introAudio"
+        src="sounds/ElevenLabs_2025-08-23T06_42_32_Adam_pre_sp100_s50_sb75_se0_b_m2.mp3"
+      ></audio>
+    </div>
+
+    <!-- Auth button -->
+    <div id="authBtnWrap" class="authwrap hidden">
+      <button id="authOpen" class="btn ghost">Sign in</button>
+    </div>
+
+    <!-- App -->
+    <div id="app" class="app hidden">
+      <header class="topbar">
+        <div class="brand">
+          <span class="dot"></span><span class="brand-text">NOVA</span>
+        </div>
+        <div class="controls">
+          <button id="micBtn" class="mic icon">🎤</button>
+          <button id="stopBtn" class="btn ghost">Stop Voice</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <div id="messages" class="messages"></div>
+
+        <!-- Grouped status and listening animation -->
+        <div class="status-listening">
+          <!-- Added status element -->
+          <div id="status" class="status">Ready</div>
+
+          <div id="listening" class="listening hidden">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+            <div class="bars">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Composer stays at the very bottom -->
+        <div class="composer">
+          <input
+            id="prompt"
+            class="inp"
+            placeholder="Ask NOVA anything..."
+            autocomplete="off"
+          />
+          <button id="sendBtn" class="btn primary">Send</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Auth modal -->
+    <div id="authModal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h3>Sign in</h3>
+          <button id="closeAuth" class="icon">✕</button>
+        </div>
+        <div class="modal-body">
+          <input id="authUser" class="inp" placeholder="Username" />
+          <input
+            id="authPass"
+            type="password"
+            class="inp"
+            placeholder="Password"
+          />
+          <button id="authSubmit" class="btn primary full">Submit</button>
+          <div id="authMsg" class="muted small"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
